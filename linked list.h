@@ -17,9 +17,11 @@ struct Linked_List
 };
 
 template <typename T>
-void showLinkedList(Linked_List<T> list) {
+void showLinkedList(Linked_List<T> list)
+{
     ListNode<T> *p = list.pHead;
-    while (p != nullptr) {
+    while (p != nullptr)
+    {
         cout << p->data << " ";
         p = p->pNext;
     }
