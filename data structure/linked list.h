@@ -14,12 +14,29 @@ struct Linked_List
 {
     ListNode<T> *pHead = nullptr, *pTail = nullptr;
     int nNode = 0;
+
+    void showLinkedList();
+    bool isEmptyList();
+
+    ListNode<T> *findByIndex(int index);
+    ListNode<T> *findByData(T data, int &index);
+
+    ListNode<T> *addHead(T data);
+    ListNode<T> *addTail(T data);
+    ListNode<T> *addAtIndex(T data, int index);
+    ListNode<T> *addKeepOrder(T data);
+
+    bool deleteListNodeAtIndex(int index);
+    bool deleteListHeadNode();
+    bool deleteListTailNode();
+    bool deleteListNodeByData(T data);
+    bool deleteLinkedList();
 };
 
 template <typename T>
-void showLinkedList(Linked_List<T> list)
+void Linked_List<T>::showLinkedList()
 {
-    ListNode<T> *p = list.pHead;
+    ListNode<T> *p = pHead;
     while (p != nullptr)
     {
         cout << p->data << " ";
@@ -41,58 +58,58 @@ ListNode<T> *newListNode(T data, ListNode<T> *pNext)
 }
 
 template <typename T>
-bool isEmptyList(Linked_List<T> list)
+bool Linked_List<T>::isEmptyList()
 {
-    return list.nNode == 0;
+    return nNode == 0;
 }
 
 template <typename T>
-ListNode<T> *addHead(T data, Linked_List<T> &list)
+ListNode<T> *Linked_List<T>::addHead(T data)
 {
-    ListNode<T> *new_node = newListNode<T>(data, list.pHead);
+    ListNode<T> *new_node = newListNode<T>(data, pHead);
     if (new_node != nullptr)
     {
-        if (isEmptyList<T>(list))
-            list.pHead = list.pTail = new_node;
+        if (isEmptyList())
+            pHead = pTail = new_node;
         else
-            list.pHead = new_node;
-        list.nNode++;
+            pHead = new_node;
+        nNode++;
     }
     return new_node;
 }
 
 template <typename T>
-ListNode<T> *addTail(T data, Linked_List<T> &list)
+ListNode<T> *Linked_List<T>::addTail(T data)
 {
-    if (isEmptyList<T>(list))
-        return addHead<T>(data, list);
+    if (isEmptyList())
+        return addHead(data);
     ListNode<T> *new_node = newListNode<T>(data, nullptr);
     if (new_node != nullptr)
     {
-        list.pTail->pNext = new_node;
-        list.pTail = new_node;
-        list.nNode++;
+        pTail->pNext = new_node;
+        pTail = new_node;
+        nNode++;
     }
     return new_node;
 }
 
 template <typename T>
-ListNode<T> *findByIndex(int index, Linked_List<T> list)
+ListNode<T> *Linked_List<T>::findByIndex(int index)
 {
-    if (index < 0 || index >= list.nNode)
+    if (index < 0 || index >= nNode)
         return nullptr;
-    ListNode<T> *p = list.pHead;
+    ListNode<T> *p = pHead;
     while (index--)
         p = p->pNext;
     return p;
 }
 
 template <typename T>
-ListNode<T> *findByData(T data, Linked_List<T> list, int &index)
+ListNode<T> *Linked_List<T>::findByData(T data, int &index)
 {
-    if (isEmptyList<T>(list))
+    if (isEmptyList())
         return nullptr;
-    ListNode<T> *p = list.pHead;
+    ListNode<T> *p = pHead;
     index = 0;
     while (p != nullptr)
     {
@@ -105,31 +122,31 @@ ListNode<T> *findByData(T data, Linked_List<T> list, int &index)
 }
 
 template <typename T>
-ListNode<T> *addAtIndex(T data, Linked_List<T> &list, int index)
+ListNode<T> *Linked_List<T>::addAtIndex(T data, int index)
 {
     if (index == 0)
-        return addHead<T>(data, list);
-    if (index == list.nNode)
-        return addTail<T>(data, list);
-    if (index < 0 || index > list.nNode)
+        return addHead(data);
+    if (index == nNode)
+        return addTail(data);
+    if (index < 0 || index > nNode)
         return nullptr;
 
-    ListNode<T> *prev_Index = findByIndex<T>(index - 1, list); // sure 0 <= prevIndex <= nNode-2
-    ListNode<T> *at_Index = findByIndex<T>(index, list);       // sure 1 <= index <= nNode-1
+    ListNode<T> *prev_Index = findByIndex(index - 1); // sure 0 <= prevIndex <= nNode-2
+    ListNode<T> *at_Index = findByIndex(index);       // sure 1 <= index <= nNode-1
     ListNode<T> *new_node = newListNode<T>(data, at_Index);
     prev_Index->pNext = new_node;
-    list.nNode++;
+    nNode++;
     return new_node;
 }
 
 template <typename T>
-ListNode<T> *addKeepOrder(T data, Linked_List<T> &sortedList)
+ListNode<T> *Linked_List<T>::addKeepOrder(T data)
 {
-    if (isEmptyList<T>(sortedList))
-        return addHead<T>(data, sortedList);
+    if (isEmptyList())
+        return addHead(data);
 
     bool isIncreasing = true;
-    for (ListNode<T> *p = sortedList.pHead; p != nullptr; p = p->pNext)
+    for (ListNode<T> *p = pHead; p != nullptr; p = p->pNext)
     {
         if (p->pNext != nullptr && p->data > p->pNext->data)
         {
@@ -138,7 +155,7 @@ ListNode<T> *addKeepOrder(T data, Linked_List<T> &sortedList)
         }
     }
 
-    ListNode<T> *p = sortedList.pHead;
+    ListNode<T> *p = pHead;
     int index = 0;
 
     if (isIncreasing)
@@ -148,7 +165,7 @@ ListNode<T> *addKeepOrder(T data, Linked_List<T> &sortedList)
             p = p->pNext;
             index++;
         }
-        return addAtIndex<T>(data, sortedList, index);
+        return addAtIndex(data, index);
     }
     else
     {
@@ -157,7 +174,7 @@ ListNode<T> *addKeepOrder(T data, Linked_List<T> &sortedList)
             p = p->pNext;
             index++;
         }
-        return addAtIndex<T>(data, sortedList, index + 1);
+        return addAtIndex(data, index + 1);
     }
 
     return nullptr;
@@ -176,61 +193,61 @@ bool freeMemoryListNode(ListNode<T> *p)
 }
 
 template <typename T>
-bool deleteListNodeAtIndex(int index, Linked_List<T> &list)
+bool Linked_List<T>::deleteListNodeAtIndex(int index)
 {
-    ListNode<T> *p = findByIndex<T>(index, list);
+    ListNode<T> *p = findByIndex(index);
     if (p != nullptr)
     {
-        ListNode<T> *prev = findByIndex<T>(index - 1, list);
+        ListNode<T> *prev = findByIndex(index - 1);
         ListNode<T> *next = p->pNext;
         if (prev != nullptr)
             prev->pNext = next;
         freeMemoryListNode<T>(p);
         if (index == 0)
-            list.pHead = next;
-        if (index == list.nNode - 1)
-            list.pTail = prev;
-        list.nNode--;
+            pHead = next;
+        if (index == nNode - 1)
+            pTail = prev;
+        nNode--;
         return true;
     }
     return false;
 }
 
 template <typename T>
-bool deleteListHeadNode(Linked_List<T> &list)
+bool Linked_List<T>::deleteListHeadNode()
 {
-    return deleteListNodeAtIndex<T>(0, list);
+    return deleteListNodeAtIndex(0);
 }
 
 template <typename T>
-bool deleteListTailNode(Linked_List<T> &list)
+bool Linked_List<T>::deleteListTailNode()
 {
-    return deleteListNodeAtIndex<T>(list.nNode - 1, list);
+    return deleteListNodeAtIndex(nNode - 1);
 }
 
 template <typename T>
-bool deleteListNodeByData(T data, Linked_List<T> &list)
+bool Linked_List<T>::deleteListNodeByData(T data)
 {
     int index;
-    ListNode<T> *p = findByData<T>(data, list, index);
+    ListNode<T> *p = findByData(data, index);
     if (p != nullptr)
-        return deleteListNodeAtIndex<T>(index, list);
+        return deleteListNodeAtIndex(index);
     return false;
 }
 
 template <typename T>
-bool deleteLinkedList(Linked_List<T> &list)
+bool Linked_List<T>::deleteLinkedList()
 {
-    if (isEmptyList<T>(list))
+    if (isEmptyList())
         return false;
-    ListNode<T> *p = list.pHead, *q = nullptr;
+    ListNode<T> *p = pHead, *q = nullptr;
     while (p != nullptr)
     {
         q = p->pNext;
         delete[] p;
         p = q;
     }
-    list.pHead = list.pTail = nullptr;
-    list.nNode = 0;
+    pHead = pTail = nullptr;
+    nNode = 0;
     return true;
 }

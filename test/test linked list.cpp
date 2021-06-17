@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../linked list.h"
+#include "../data structure/linked list.h"
 
 using namespace std;
 
@@ -30,9 +30,9 @@ int main()
     {
         cout << "\ndata: ";
         cin >> data;
-        addTail<int>(data, list);
+        list.addTail(data);
         cout << "current list: ";
-        showLinkedList<int>(list);
+        list.showLinkedList();
         cout << "Continue? (y/n): ";
         char x;
         cin >> x;
@@ -50,7 +50,7 @@ int main()
             int index;
             cout << "\nindex: ";
             cin >> index;
-            ListNode<int> *z = findByIndex<int>(index, list);
+            ListNode<int> *z = list.findByIndex(index);
             if (z)
             {
                 cout << "node[" << index << "] = " << z->data << endl;
@@ -64,7 +64,7 @@ int main()
             int data, index;
             cout << "\ndata to search: ";
             cin >> data;
-            ListNode<int> *z = findByData<int>(data, list, index);
+            ListNode<int> *z = list.findByData(data, index);
             if (z)
             {
                 cout << "node[" << index << "] = " << data << endl;
@@ -78,9 +78,9 @@ int main()
             int data;
             cout << "\ndata: ";
             cin >> data;
-            addHead<int>(data, list);
+            list.addHead(data);
             cout << "list after add head: ";
-            showLinkedList<int>(list);
+            list.showLinkedList();
         }
         break;
         case 4:
@@ -88,9 +88,9 @@ int main()
             int data;
             cout << "\ndata: ";
             cin >> data;
-            addTail<int>(data, list);
+            list.addTail(data);
             cout << "list after add tail: ";
-            showLinkedList<int>(list);
+            list.showLinkedList();
         }
         break;
         case 5:
@@ -100,9 +100,9 @@ int main()
             cin >> data;
             cout << "index: ";
             cin >> index;
-            addAtIndex<int>(data, list, index);
+            list.addAtIndex(data, index);
             cout << "list after add: ";
-            showLinkedList<int>(list);
+            list.showLinkedList();
         }
         break;
         case 6:
@@ -111,23 +111,23 @@ int main()
             int data;
             cout << "\ndata: ";
             cin >> data;
-            addKeepOrder<int>(data, list);
+            list.addKeepOrder(data);
             cout << "list after add keep order: ";
-            showLinkedList<int>(list);
+            list.showLinkedList();
         }
         break;
         case 7:
         {
-            deleteListHeadNode<int>(list);
+            list.deleteListHeadNode();
             cout << "list after delete head: ";
-            showLinkedList<int>(list);
+            list.showLinkedList();
         }
         break;
         case 8:
         {
-            deleteListTailNode<int>(list);
+            list.deleteListTailNode();
             cout << "list after delete tail: ";
-            showLinkedList<int>(list);
+            list.showLinkedList();
         }
         break;
         case 9:
@@ -135,10 +135,10 @@ int main()
             int index;
             cout << "\nindex: ";
             cin >> index;
-            if (deleteListNodeAtIndex<int>(index, list) == false)
+            if (list.deleteListNodeAtIndex(index) == false)
                 cout << "invalid index!\n";
             cout << "list after delete: ";
-            showLinkedList<int>(list);
+            list.showLinkedList();
         }
         break;
         case 10:
@@ -146,9 +146,9 @@ int main()
             int data;
             cout << "\ndata: ";
             cin >> data;
-            deleteListNodeByData<int>(data, list);
+            list.deleteListNodeByData(data);
             cout << "list after delete: ";
-            showLinkedList<int>(list);
+            list.showLinkedList();
         }
         break;
         default:
@@ -162,6 +162,6 @@ int main()
             break;
     }
 
-    deleteLinkedList<int>(list);
+    list.deleteLinkedList();
     return 0;
 }
