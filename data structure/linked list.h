@@ -31,6 +31,10 @@ struct Linked_List
     bool deleteListTailNode();
     bool deleteListNodeByData(T data);
     bool deleteLinkedList();
+
+    void merge(Linked_List<T> list1, Linked_List<T> list2);
+    void halfSeperate(Linked_List<T> &list1, Linked_List<T> &list2);
+    void mergeSort();
 };
 
 template <typename T>
@@ -250,4 +254,77 @@ bool Linked_List<T>::deleteLinkedList()
     pHead = pTail = nullptr;
     nNode = 0;
     return true;
+}
+
+// This function merge list1 and list2 to list
+template <typename T>
+void Linked_List<T>::merge(Linked_List<T> list1, Linked_List<T> list2)
+{
+    deleteLinkedList();
+    ListNode<T> *p1, *p2;
+    p1 = list1.pHead;
+    p2 = list2.pHead;
+    while (p1 != nullptr && p2 != nullptr)
+    {
+        T appendValue;
+        if (p1->data <= p2->data)
+        {
+            appendValue = p1->data;
+            p1 = p1->pNext;
+            addTail(appendValue);
+        }
+        else
+        {
+            appendValue = p2->data;
+            p2 = p2->pNext;
+            addTail(appendValue);
+        }
+    }
+    while (p1 != nullptr)
+    {
+        addTail(p1->data);
+        p1 = p1->pNext;
+    }
+    while (p2 != nullptr)
+    {
+        addTail(p2->data);
+        p2 = p2->pNext;
+    }
+}
+
+// This function seperate list to list1 and list2 equally.
+template <typename T>
+void Linked_List<T>::halfSeperate(Linked_List<T> &list1, Linked_List<T> &list2)
+{
+    ListNode<T> *p1 = pHead;
+    int count = 0;
+    int sizeList1 = nNode / 2;
+    while (p1 != nullptr && count < sizeList1)
+    {
+        list1.addTail(p1->data);
+        p1 = p1->pNext;
+        count++;
+    }
+    count = 0;
+    int sizeList2 = nNode - sizeList1;
+    while (p1 != nullptr && count < sizeList2)
+    {
+        list2.addTail(p1->data);
+        p1 = p1->pNext;
+        count++;
+    }
+}
+
+template <typename T>
+void Linked_List<T>::mergeSort()
+{
+    if (nNode == 1)
+        return;
+    Linked_List<T> list1, list2;
+    halfSeperate(list1, list2);
+    list1.mergeSort();
+    list2.mergeSort();
+    merge(list1, list2);
+    list1.deleteLinkedList();
+    list2.deleteLinkedList();
 }
