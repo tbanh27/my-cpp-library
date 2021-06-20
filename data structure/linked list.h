@@ -248,7 +248,7 @@ bool Linked_List<T>::deleteLinkedList()
     while (p != nullptr)
     {
         q = p->pNext;
-        delete[] p;
+        delete p;
         p = q;
     }
     pHead = pTail = nullptr;
