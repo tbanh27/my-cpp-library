@@ -122,9 +122,11 @@ CircularLinkedList<T>::CircularLinkedList()
     this->pTail = nullptr;
 }
 
+// Constructor create new circular linked list with given size and data array
 template <class T>
 CircularLinkedList<T>::CircularLinkedList(int size, T *data)
 {
+    this->setTailNode(nullptr);
     for (int i = 0; i < size; ++i)
         this->addTail(data[i]);
 }
