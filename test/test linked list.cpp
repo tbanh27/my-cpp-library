@@ -1,5 +1,6 @@
 #include <iostream>
 #include "../data structure/linked list.h"
+#include <string.h>
 
 using namespace std;
 
