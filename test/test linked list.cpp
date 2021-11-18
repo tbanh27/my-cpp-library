@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include "../data structure/linked list.h"
 #include <string.h>
 
@@ -165,4 +165,4 @@ int main()
 
     list.deleteLinkedList();
     return 0;
-}
+}*/
