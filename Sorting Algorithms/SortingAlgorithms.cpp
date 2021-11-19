@@ -493,16 +493,25 @@ long long MergeSortCalcCompare(int *a, int n) {
 // nằm ở đúng vị trí trong mảng sau khi được sắp, tiếp tục gọi đệ quy quick sort với mỗi mảng con sau khi phân hoạch
 // Tài liệu tham khảo: video record thầy Phương, ngày 8-10-2021 phần 2
 // Link: https://drive.google.com/file/d/1MmJcIQSi24xjkbpAkR8cI91371xFNoFL/view
+// Cai tien: chon pivot la median cua left, right va mid
+// Link tham khao: https://en.wikipedia.org/wiki/Quicksort#Choice_of_pivot
 
 // Hàm phân hoạch mảng từ vị trí left đến right, phần tử pivot là a[left]
 // trả về vị trí cuối của pivot
 int Partition(int *a, int left, int right) {
     // Chọn pivot là phần tử ngoài cùng bên trái
-    int pivot = a[left];
+    int mid = left + (right - left) / 2;
+    if (a[left] > a[mid])
+        MySwapFunction(a[left], a[mid]);
+    if (a[left] > a[right])
+        MySwapFunction(a[left], a[right]);
+    if (a[mid] < a[right])
+        MySwapFunction(a[mid], a[right]);
+    int pivot = a[right];
     
     // Các biến chạy i chạy từ trái sang phải, j chạy từ phải sang trái
-    int i = left;
-    int j = right + 1;
+    int i = left - 1;
+    int j = right;
     do {
         // Tăng i đến khi a[i] >= pivot
         do
@@ -524,8 +533,8 @@ int Partition(int *a, int left, int right) {
     MySwapFunction(a[i], a[j]);
 
     // Đưa pivot vào vị trí đúng của nó trong mảng được sắp
-    MySwapFunction(a[j], a[left]);
-    return j;
+    MySwapFunction(a[i], a[right]);
+    return i;
 }
 
 // Hàm quick sort chia để trị
@@ -548,11 +557,18 @@ long long QuickSortCalcTime(int *a, int n) {
 // Hàm phân hoạch có đếm số phép so sánh
 int PartitionCountCompare(int *a, int left, int right, long long &cmp) {
     // Chọn pivot là phần tử ngoài cùng bên trái
-    int pivot = a[left];
+    int mid = left + (right - left) / 2;
+    if (++cmp && a[left] > a[mid])
+        MySwapFunction(a[left], a[mid]);
+    if (++cmp && a[left] > a[right])
+        MySwapFunction(a[left], a[right]);
+    if (++cmp && a[mid] < a[right])
+        MySwapFunction(a[mid], a[right]);
+    int pivot = a[right];
     
     // Các biến chạy i chạy từ trái sang phải, j chạy từ phải sang trái
-    int i = left;
-    int j = right + 1;
+    int i = left - 1;
+    int j = right;
     do {
         // Tăng i đến khi a[i] >= pivot
         do
@@ -574,8 +590,8 @@ int PartitionCountCompare(int *a, int left, int right, long long &cmp) {
     MySwapFunction(a[i], a[j]);
 
     // Đưa pivot vào vị trí đúng của nó trong mảng được sắp
-    MySwapFunction(a[j], a[left]);
-    return j;
+    MySwapFunction(a[i], a[right]);
+    return i;
 }
 
 // Hàm quick sort chia để trị có đến số phép so sánh

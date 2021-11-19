@@ -88,7 +88,7 @@ int main() {
             out << "Comparisons: " << ShakerSortCountCompare(array, dataSize) << "\n";
             cout << "Shaker Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
         }*/
-        for (int size = 0; size < 6; size++) {
+        /*for (int size = 0; size < 6; size++) {
             int dataSize = dataSizes[size];
             string dataOrder = getOrder(order);
             GenerateData(array, dataSize, order);
@@ -99,7 +99,7 @@ int main() {
             //GenerateData(array, dataSize, order);
             //out << "Comparisons: " << ShakerSortCountCompare(array, dataSize) << "\n";
             cout << "Shell Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
-        }
+        }*/
         for (int size = 0; size < 6; size++) {
             int dataSize = dataSizes[size];
             string dataOrder = getOrder(order);

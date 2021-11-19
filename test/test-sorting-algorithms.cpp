@@ -262,11 +262,18 @@ long long MergeSortCalcCompare(int *a, int n) {
 
 int Partition(int *a, int left, int right) {
     // Chọn pivot là phần tử ngoài cùng bên trái
-    int pivot = a[left];
+    int mid = left + (right - left) / 2;
+    if (a[left] > a[mid])
+        swap(a[left], a[mid]);
+    if (a[left] > a[right])
+        swap(a[left], a[right]);
+    if (a[mid] < a[right])
+        swap(a[mid], a[right]);
+    int pivot = a[right];
     
     // Các biến chạy i chạy từ trái sang phải, j chạy từ phải sang trái
-    int i = left;
-    int j = right + 1;
+    int i = left - 1;
+    int j = right;
     do {
         // Tăng i đến khi a[i] >= pivot
         do
@@ -288,8 +295,8 @@ int Partition(int *a, int left, int right) {
     MySwapFunction(a[i], a[j]);
 
     // Đưa pivot vào vị trí đúng của nó trong mảng được sắp
-    MySwapFunction(a[j], a[left]);
-    return j;
+    MySwapFunction(a[i], a[right]);
+    return i;
 }
 
 void QuickSort(int *a, int left, int right) {
@@ -374,12 +381,12 @@ long long CountingSortCalcCompare(int *a, int n) {
 }
 
 int main() {
-    int n = 500000;
+    int n = 200000;
 
     int *a = new int[n];
     int *b = new int[n];
 
-    GenerateReverseData(a, n);
+    GenerateSortedData(a, n);
     //GenerateSortedData(b, n);
     //GenerateReverseData(b, n);
     //GenerateReverseData(a, n);
