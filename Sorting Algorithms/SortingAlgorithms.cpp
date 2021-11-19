@@ -499,7 +499,9 @@ long long MergeSortCalcCompare(int *a, int n) {
 // Hàm phân hoạch mảng từ vị trí left đến right, phần tử pivot là a[left]
 // trả về vị trí cuối của pivot
 int Partition(int *a, int left, int right) {
-    // Chọn pivot là phần tử ngoài cùng bên trái
+    // Hoán vị để phần tử trung vị của a[left], a[mid], a[right]
+    // nằm ở right (rule median-of-three)
+    // Sau đó chọn pivot là a[right]
     int mid = left + (right - left) / 2;
     if (a[left] > a[mid])
         MySwapFunction(a[left], a[mid]);
@@ -556,7 +558,9 @@ long long QuickSortCalcTime(int *a, int n) {
 
 // Hàm phân hoạch có đếm số phép so sánh
 int PartitionCountCompare(int *a, int left, int right, long long &cmp) {
-    // Chọn pivot là phần tử ngoài cùng bên trái
+    // Hoán vị để phần tử trung vị của a[left], a[mid], a[right]
+    // nằm ở right (rule median-of-three)
+    // Sau đó chọn pivot là a[right]
     int mid = left + (right - left) / 2;
     if (++cmp && a[left] > a[mid])
         MySwapFunction(a[left], a[mid]);
