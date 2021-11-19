@@ -1,4 +1,7 @@
 #include <iostream>
+#include <sstream>
+#include <string>
+#include <cmath>
 #include <chrono>
 using namespace std;
 
@@ -262,11 +265,18 @@ long long MergeSortCalcCompare(int *a, int n) {
 
 int Partition(int *a, int left, int right) {
     // Chọn pivot là phần tử ngoài cùng bên trái
-    int pivot = a[left];
+    int mid = left + (right - left) / 2;
+    if (a[left] > a[mid])
+        swap(a[left], a[mid]);
+    if (a[left] > a[right])
+        swap(a[left], a[right]);
+    if (a[mid] < a[right])
+        swap(a[mid], a[right]);
+    int pivot = a[right];
     
     // Các biến chạy i chạy từ trái sang phải, j chạy từ phải sang trái
-    int i = left;
-    int j = right + 1;
+    int i = left - 1;
+    int j = right;
     do {
         // Tăng i đến khi a[i] >= pivot
         do
@@ -288,8 +298,8 @@ int Partition(int *a, int left, int right) {
     MySwapFunction(a[i], a[j]);
 
     // Đưa pivot vào vị trí đúng của nó trong mảng được sắp
-    MySwapFunction(a[j], a[left]);
-    return j;
+    MySwapFunction(a[i], a[right]);
+    return i;
 }
 
 void QuickSort(int *a, int left, int right) {
@@ -373,35 +383,72 @@ long long CountingSortCalcCompare(int *a, int n) {
     return cmp;
 }
 
+// RADIX SORT
+
+int Digit(int num, int k) {
+    int digitk = (num / int(pow(10, k))) % 10;
+    return digitk;
+}
+
+int CalcDRadixSort(int *a, int n) {
+    stringstream ss;
+    ss << FindMax(a, n);
+    return ss.str().length();
+}
+
+// Hàm sắp xếp theo cơ số
+void RadixSort(int *a, int n, int k) {
+    // count[i] là số lần xuất hiện số i trong các chữ số hàng k
+    // của các phần tử của mảng
+    int *count = new int[10]{0};
+
+    for (int i=0; i<n; i++) {
+        count[Digit(a[i], k)]++;
+    }
+
+    printArray(count, 10);
+
+    for (int i=1; i<n; i++) {
+        count[i] += count[i-1];
+    }
+
+    printArray(count, 10);
+
+    int *temp = new int[n];
+    for (int i=n-1; i>=0; --i) {
+        temp[--count[Digit(a[i], k)]] = a[i];
+    }
+
+    for (int i=0; i<n; i++)
+        a[i] = temp[i];
+
+    delete[] count;
+    delete[] temp;
+}
+
+void LSDRadixSort(int *a, int n, int d) {
+    for (int k=0; k<d; k++)
+        RadixSort(a, n, k);
+}
+
 int main() {
-    int n = 500000;
+    int n = 20;
 
     int *a = new int[n];
-    int *b = new int[n];
+    //int *b = new int[n];
 
-    GenerateReverseData(a, n);
-    //GenerateSortedData(b, n);
-    //GenerateReverseData(b, n);
-    //GenerateReverseData(a, n);
-    //GenerateSortedData(b, n);
-    //GenerateNearlySortedData(b, n);
+    GenerateData(a, n, 0);
 
-    //printArray(a, n);
-    //printArray(b, n);
-
-    //cout << HeapSort(a, n) << endl;
-    //cout << MergeSortCalcTime(b, n) << " milisecs\n";
-    //cout << CountingSortCalcTime(a, n) << " milisecs" << endl;
-    //cout << CountingSortCalcCompare(b, n) << " comparisons\n";
-
-    //CountingSortCalcTime(b, n);
-    //printArray(b, n);
-    QuickSort(a, 0, n - 1);
     printArray(a, n);
     //printArray(b, n);
 
+    int d = CalcDRadixSort(a, n);
+    LSDRadixSort(a, n, d);
+
+    printArray(a, n);
+
     delete[] a;
-    delete[] b;
+    //delete[] b;
 
     return 0;
 }
