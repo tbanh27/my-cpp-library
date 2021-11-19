@@ -40,6 +40,7 @@ int main() {
     cout << "STARTED...\n";
 
     for (int order = 0; order < 4; order++) {
+        out << "##################################################################\n";
         /*for (int size = 0; size < 6; size++) {
             int dataSize = dataSizes[size];
             string dataOrder = getOrder(order);
@@ -147,6 +148,18 @@ int main() {
             GenerateData(array, dataSize, order);
             out << "Comparisons: " << CountingSortCalcCompare(array, dataSize) << "\n";
             cout << "Counting Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
+        }
+        for (int size = 0; size < 6; size++) {
+            int dataSize = dataSizes[size];
+            string dataOrder = getOrder(order);
+            GenerateData(array, dataSize, order);
+            out << "\n\nRadix Sort:\n";
+            out << "Order: " << dataOrder << "\n";
+            out << "Size: " << dataSize << endl;
+            out << "Used Time: " << LSDRadixSortCalcTime(array, dataSize) << " milisecs\n";
+            GenerateData(array, dataSize, order);
+            out << "Comparisons: " << LSDRadixSortCalcCompare(array, dataSize) << "\n";
+            cout << "LSD Radix Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
         }
     }
 

@@ -385,18 +385,20 @@ long long CountingSortCalcCompare(int *a, int n) {
 
 // RADIX SORT
 
+// Hàm trả về chữ số cơ số k của num
 int Digit(int num, int k) {
     int digitk = (num / int(pow(10, k))) % 10;
     return digitk;
 }
 
+// Hàm trả về số chữ số của số lớn nhất trong mảng
 int CalcDRadixSort(int *a, int n) {
     stringstream ss;
     ss << FindMax(a, n);
     return ss.str().length();
 }
 
-// Hàm sắp xếp theo cơ số
+// Hàm sắp xếp theo cơ số k
 void RadixSort(int *a, int n, int k) {
     // count[i] là số lần xuất hiện số i trong các chữ số hàng k
     // của các phần tử của mảng
@@ -406,43 +408,100 @@ void RadixSort(int *a, int n, int k) {
         count[Digit(a[i], k)]++;
     }
 
-    printArray(count, 10);
-
-    for (int i=1; i<n; i++) {
+    // Xử lý lại mảng count để counting sort
+    for (int i=1; i<10; i++) {
         count[i] += count[i-1];
     }
 
-    printArray(count, 10);
-
-    int *temp = new int[n];
+    // Mảng temp để chứa tạm kết quả sắp xếp
+    int *temp = new int[n]{0};
     for (int i=n-1; i>=0; --i) {
         temp[--count[Digit(a[i], k)]] = a[i];
     }
 
+    // Sao chép kết quả tạm sang mảng chính
     for (int i=0; i<n; i++)
         a[i] = temp[i];
 
+    // Trả lại bộ nhớ
     delete[] count;
     delete[] temp;
 }
 
+// Hàm sắp xếp theo cơ số (bắt đầu từ Least Significant Digit)
+// d là số chữ số của số lớn nhất trong mảng
 void LSDRadixSort(int *a, int n, int d) {
     for (int k=0; k<d; k++)
         RadixSort(a, n, k);
 }
 
+// Hàm sắp xếp theo cơ số trả về thời gian thực thi giải thuật
+long long LSDRadixSortCalcTime(int *a, int n) {
+    int d = CalcDRadixSort(a, n);
+    auto start = chrono::high_resolution_clock::now();
+    LSDRadixSort(a, n, d);
+    auto end = chrono::high_resolution_clock::now();
+    return chrono::duration_cast<chrono::milliseconds>(end - start).count();
+}
+
+// Hàm sắp xếp theo cơ số k
+void RadixSortCountCmp(int *a, int n, int k, long long &cmp) {
+    // count[i] là số lần xuất hiện số i trong các chữ số hàng k
+    // của các phần tử của mảng
+    int *count = new int[10]{0};
+
+    for (int i=0; ++cmp && i<n; i++) {
+        count[Digit(a[i], k)]++;
+    }
+
+    // Xử lý lại mảng count để counting sort
+    for (int i=1; ++cmp && i<10; i++) {
+        count[i] += count[i-1];
+    }
+
+    // Mảng temp để chứa tạm kết quả sắp xếp
+    int *temp = new int[n]{0};
+    for (int i=n-1; ++cmp && i>=0; --i) {
+        temp[--count[Digit(a[i], k)]] = a[i];
+    }
+
+    // Sao chép kết quả tạm sang mảng chính
+    for (int i=0; ++cmp && i<n; i++)
+        a[i] = temp[i];
+
+    // Trả lại bộ nhớ
+    delete[] count;
+    delete[] temp;
+}
+
+// Hàm sắp xếp theo cơ số (bắt đầu từ Least Significant Digit)
+// d là số chữ số của số lớn nhất trong mảng
+void LSDRadixSortCountCmp(int *a, int n, int d, long long &cmp) {
+    for (int k=0; ++cmp && k<d; k++)
+        RadixSortCountCmp(a, n, k, cmp);
+}
+
+// Hàm sắp xếp theo cơ số trả về số phép so sánh
+long long LSDRadixSortCalcCompare(int *a, int n) {
+    long long cmp = 0;
+    int d = CalcDRadixSort(a, n);
+    LSDRadixSortCountCmp(a, n, d, cmp);
+    return cmp;
+}
+
 int main() {
-    int n = 20;
+    int n = 500000;
 
     int *a = new int[n];
     //int *b = new int[n];
 
     GenerateData(a, n, 0);
 
-    printArray(a, n);
+    //printArray(a, n);
     //printArray(b, n);
 
     int d = CalcDRadixSort(a, n);
+    cout << "d = " << d << endl;
     LSDRadixSort(a, n, d);
 
     printArray(a, n);

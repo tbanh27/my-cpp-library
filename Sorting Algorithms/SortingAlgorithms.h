@@ -15,6 +15,9 @@ Các giải thuật sắp xếP được cài đặt trong file này:
 
 #pragma once
 #include <chrono>
+#include <string>
+#include <sstream>
+#include <cmath>
 using namespace std;
 
 //============================================================================================================
@@ -182,3 +185,32 @@ long long CountingSortCalcTime(int *a, int n);
 
 // Hàm sắp xếp đếm trả về số phép so sánh
 long long CountingSortCalcCompare(int *a, int n);
+
+//==========================================================================================================
+// RADIX SORT
+
+// Hàm trả về chữ số cơ số k của num
+int Digit(int num, int k);
+
+// Hàm trả về số chữ số của số lớn nhất trong mảng
+int CalcDRadixSort(int *a, int n);
+
+// Hàm sắp xếp theo cơ số k
+void RadixSort(int *a, int n, int k);
+
+// Hàm sắp xếp theo cơ số (bắt đầu từ Least Significant Digit)
+// d là số chữ số của số lớn nhất trong mảng
+void LSDRadixSort(int *a, int n, int d);
+
+// Hàm sắp xếp theo cơ số k
+void RadixSortCountCmp(int *a, int n, int k, long long &cmp);
+
+// Hàm sắp xếp theo cơ số (bắt đầu từ Least Significant Digit)
+// d là số chữ số của số lớn nhất trong mảng
+void LSDRadixSortCountCmp(int *a, int n, int d, long long &cmp);
+
+// Hàm sắp xếp theo cơ số trả về thời gian thực thi giải thuật
+long long LSDRadixSortCalcTime(int *a, int n);
+
+// Hàm sắp xếp theo cơ số trả về số phép so sánh
+long long LSDRadixSortCalcCompare(int *a, int n);
