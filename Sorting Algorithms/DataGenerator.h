@@ -12,9 +12,6 @@ void HoanVi(T &a, T &b)
 	b = x;
 }
 
-static int dataTypes[4] = {0, 1, 2, 3};
-static int dataSizes[5] = {30000, 50000, 100000, 300000, 500000};
-
 //-------------------------------------------------
 
 // Hàm phát sinh mảng dữ liệu ngẫu nhiên

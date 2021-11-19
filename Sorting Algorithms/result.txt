@@ -1,0 +1,357 @@
+
+
+Shell Sort:
+Order: Randomize
+Size: 10000
+Used Time: 1 milisecs
+
+
+Shell Sort:
+Order: Randomize
+Size: 30000
+Used Time: 6 milisecs
+
+
+Shell Sort:
+Order: Randomize
+Size: 50000
+Used Time: 13 milisecs
+
+
+Shell Sort:
+Order: Randomize
+Size: 100000
+Used Time: 36 milisecs
+
+
+Shell Sort:
+Order: Randomize
+Size: 300000
+Used Time: 106 milisecs
+
+
+Shell Sort:
+Order: Randomize
+Size: 500000
+Used Time: 172 milisecs
+
+
+Heap Sort:
+Order: Randomize
+Size: 10000
+Used Time: 1 milisecs
+Comparisons: 497404
+
+
+Heap Sort:
+Order: Randomize
+Size: 30000
+Used Time: 6 milisecs
+Comparisons: 1680801
+
+
+Heap Sort:
+Order: Randomize
+Size: 50000
+Used Time: 12 milisecs
+Comparisons: 2951951
+
+
+Heap Sort:
+Order: Randomize
+Size: 100000
+Used Time: 24 milisecs
+Comparisons: 6303900
+
+
+Heap Sort:
+Order: Randomize
+Size: 300000
+Used Time: 72 milisecs
+Comparisons: 20797225
+
+
+Heap Sort:
+Order: Randomize
+Size: 500000
+Used Time: 123 milisecs
+Comparisons: 36119126
+
+
+Merge Sort:
+Order: Randomize
+Size: 10000
+Used Time: 1 milisecs
+Comparisons: 572698
+
+
+Merge Sort:
+Order: Randomize
+Size: 30000
+Used Time: 4 milisecs
+Comparisons: 1905539
+
+
+Merge Sort:
+Order: Randomize
+Size: 50000
+Used Time: 8 milisecs
+Comparisons: 3327866
+
+
+Merge Sort:
+Order: Randomize
+Size: 100000
+Used Time: 20 milisecs
+Comparisons: 7055822
+
+
+Merge Sort:
+Order: Randomize
+Size: 300000
+Used Time: 61 milisecs
+Comparisons: 23059097
+
+
+Merge Sort:
+Order: Randomize
+Size: 500000
+Used Time: 100 milisecs
+Comparisons: 39869558
+
+
+Quick Sort:
+Order: Randomize
+Size: 10000
+Used Time: 1 milisecs
+Comparisons: 211690
+
+
+Quick Sort:
+Order: Randomize
+Size: 30000
+Used Time: 5 milisecs
+Comparisons: 684688
+
+
+Quick Sort:
+Order: Randomize
+Size: 50000
+Used Time: 7 milisecs
+Comparisons: 1258769
+
+
+Quick Sort:
+Order: Randomize
+Size: 100000
+Used Time: 17 milisecs
+Comparisons: 2578343
+
+
+Quick Sort:
+Order: Randomize
+Size: 300000
+Used Time: 51 milisecs
+Comparisons: 8922451
+
+
+Quick Sort:
+Order: Randomize
+Size: 500000
+Used Time: 86 milisecs
+Comparisons: 15335728
+
+
+Counting Sort:
+Order: Randomize
+Size: 10000
+Used Time: 0 milisecs
+Comparisons: 40004
+
+
+Counting Sort:
+Order: Randomize
+Size: 30000
+Used Time: 0 milisecs
+Comparisons: 120004
+
+
+Counting Sort:
+Order: Randomize
+Size: 50000
+Used Time: 1 milisecs
+Comparisons: 200004
+
+
+Counting Sort:
+Order: Randomize
+Size: 100000
+Used Time: 2 milisecs
+Comparisons: 400004
+
+
+Counting Sort:
+Order: Randomize
+Size: 300000
+Used Time: 13 milisecs
+Comparisons: 1200004
+
+
+Counting Sort:
+Order: Randomize
+Size: 500000
+Used Time: 14 milisecs
+Comparisons: 2000004
+
+
+Shell Sort:
+Order: Sorted
+Size: 10000
+Used Time: 0 milisecs
+
+
+Shell Sort:
+Order: Sorted
+Size: 30000
+Used Time: 2 milisecs
+
+
+Shell Sort:
+Order: Sorted
+Size: 50000
+Used Time: 4 milisecs
+
+
+Shell Sort:
+Order: Sorted
+Size: 100000
+Used Time: 10 milisecs
+
+
+Shell Sort:
+Order: Sorted
+Size: 300000
+Used Time: 23 milisecs
+
+
+Shell Sort:
+Order: Sorted
+Size: 500000
+Used Time: 41 milisecs
+
+
+Heap Sort:
+Order: Sorted
+Size: 10000
+Used Time: 1 milisecs
+Comparisons: 518705
+
+
+Heap Sort:
+Order: Sorted
+Size: 30000
+Used Time: 4 milisecs
+Comparisons: 1739633
+
+
+Heap Sort:
+Order: Sorted
+Size: 50000
+Used Time: 7 milisecs
+Comparisons: 3056481
+
+
+Heap Sort:
+Order: Sorted
+Size: 100000
+Used Time: 17 milisecs
+Comparisons: 6519813
+
+
+Heap Sort:
+Order: Sorted
+Size: 300000
+Used Time: 50 milisecs
+Comparisons: 21431637
+
+
+Heap Sort:
+Order: Sorted
+Size: 500000
+Used Time: 83 milisecs
+Comparisons: 37116275
+
+
+Merge Sort:
+Order: Sorted
+Size: 10000
+Used Time: 2 milisecs
+Comparisons: 456443
+
+
+Merge Sort:
+Order: Sorted
+Size: 30000
+Used Time: 4 milisecs
+Comparisons: 1513467
+
+
+Merge Sort:
+Order: Sorted
+Size: 50000
+Used Time: 7 milisecs
+Comparisons: 2633947
+
+
+Merge Sort:
+Order: Sorted
+Size: 100000
+Used Time: 13 milisecs
+Comparisons: 5567899
+
+
+Merge Sort:
+Order: Sorted
+Size: 300000
+Used Time: 57 milisecs
+Comparisons: 18108315
+
+
+Merge Sort:
+Order: Sorted
+Size: 500000
+Used Time: 68 milisecs
+Comparisons: 31336411
+
+
+Quick Sort:
+Order: Sorted
+Size: 10000
+Used Time: 107 milisecs
+Comparisons: 50044996
+
+
+Quick Sort:
+Order: Sorted
+Size: 30000
+Used Time: 940 milisecs
+Comparisons: 450134996
+
+
+Quick Sort:
+Order: Sorted
+Size: 50000
+Used Time: 2470 milisecs
+Comparisons: 1250224996
+
+
+Quick Sort:
+Order: Sorted
+Size: 100000
+Used Time: 9871 milisecs
+Comparisons: 5000449996
+
+
+Quick Sort:
+Order: Sorted
+Size: 300000

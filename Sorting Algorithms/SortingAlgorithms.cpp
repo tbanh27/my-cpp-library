@@ -16,6 +16,12 @@ Các giải thuật sắp xếP được cài đặt trong file này:
 
 #include "SortingAlgorithms.h"
 
+void MySwapFunction(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
 // SELECTION SORT
 // Ý tưởng: Với mỗi giá trị i nằm trong đoạn [0, n-2], tìm amin = min{a[j]} với j trong đoạn
 // [i, n-1], sau đó swap amin với a[i] 
@@ -32,7 +38,7 @@ long long SelectionSort(int *a, int n) {
                 minIdx = j;
             }
         }
-        swap(a[i], a[minIdx]);
+        MySwapFunction(a[i], a[minIdx]);
     }
     auto end = chrono::high_resolution_clock::now();
     auto runtime = chrono::duration_cast<chrono::milliseconds>(end - start).count();
@@ -50,7 +56,7 @@ long long SelectionSortCountCompare(int *a, int n) {
                 minIdx = j;
             }
         }
-        swap(a[i], a[minIdx]);
+        MySwapFunction(a[i], a[minIdx]);
     }
     return compare;
 }
@@ -138,7 +144,7 @@ long long BubbleSort(int a[], int n) {
         int lastSwapPos = right;
         for (int j = left; j < right; ++j) {
             if (a[j] > a[j + 1]) {
-                swap(a[j], a[j + 1]);
+                MySwapFunction(a[j], a[j + 1]);
                 isSwapped = true;
                 lastSwapPos = j + 1;
             }
@@ -161,7 +167,7 @@ long long BubbleSortCountCompare(int a[], int n) {
         int lastSwapPos = right;
         for (int j = left; ++compare && j < right; ++j) {
             if (++compare && a[j] > a[j + 1]) {
-                swap(a[j], a[j + 1]);
+                MySwapFunction(a[j], a[j + 1]);
                 isSwapped = true;
                 lastSwapPos = j + 1;
             }
@@ -183,14 +189,14 @@ long long ShakerSort(int *a, int n) {
     do {
         for (int j = left; j < right; j++) {
             if (a[j] > a[j+1]) {
-                swap(a[j], a[j + 1]);
+                MySwapFunction(a[j], a[j + 1]);
                 lastSwapPos = j + 1;
             }
         }
         right = lastSwapPos - 1;
         for (int j = right; j > left; --j) {
             if (a[j-1] > a[j]) {
-                swap(a[j - 1], a[j]);
+                MySwapFunction(a[j - 1], a[j]);
                 lastSwapPos = j - 1;
             }
         }
@@ -202,21 +208,21 @@ long long ShakerSort(int *a, int n) {
 }
 
 // Hàm trả về số phép so sánh
-long long ShakerSort(int *a, int n) {
-    int cmp = 0;
+long long ShakerSortCountCompare(int *a, int n) {
+    long long cmp = 0;
     int left = 0, right = n - 1;
     int lastSwapPos = n - 1;
     do {
         for (int j = left; ++cmp && j < right; j++) {
             if (++cmp && a[j] > a[j+1]) {
-                swap(a[j], a[j + 1]);
+                MySwapFunction(a[j], a[j + 1]);
                 lastSwapPos = j + 1;
             }
         }
         right = lastSwapPos - 1;
         for (int j = right; ++cmp && j > left; --j) {
             if (++cmp && a[j-1] > a[j]) {
-                swap(a[j - 1], a[j]);
+                MySwapFunction(a[j - 1], a[j]);
                 lastSwapPos = j - 1;
             }
         }
@@ -257,7 +263,7 @@ long long ShellSort(int arr[], int n) {
 }
 
 // Hàm trả về số phép so sánh
-long long ShellSort(int arr[], int n) {
+long long ShellSortCountCompare(int arr[], int n) {
     long long cmp = 0;
     // Sử dụng cách chọn khoảng interval là n/2, n/4, n/8, ..., 1
     for (int interval = n/2; ++cmp && interval > 0; interval /= 2) {
@@ -353,7 +359,7 @@ long long HeapSort(int *a, int n) {
     // Sắp xếp
     int right = n - 1;
     while (right > 0) {
-        swap(a[0], a[right]);
+        MySwapFunction(a[0], a[right]);
         right--;
         sift(a, 0, right);
     }
@@ -376,13 +382,14 @@ long long HeapSortCountCompare(int *a, int n) {
     // Sắp xếp
     int right = n - 1;
     while (++cmp && right > 0) {
-        swap(a[0], a[right]);
+        MySwapFunction(a[0], a[right]);
         right--;
         cmp += siftCountCompare(a, 0, right);
     }
     return cmp;
 }
 
+//============================================================================================================
 // MERGE SORT
 // Hàm trộn hai mảng a, b vào mảng c theo thứ tự không giảm
 void MergeArray(int *a, int *b, int sizea, int sizeb, int *c) {
@@ -477,5 +484,194 @@ long long MergeSortCalcCompare(int *a, int n) {
     long long cmp = 0;
     MergeSortCountCompare(a, n, temp, cmp);
     delete[] temp;
+    return cmp;
+}
+
+//============================================================================================================
+// QUICK SORT
+// Ý tưởng: chọn phần tử pivot, sau đó phân hoạch mảng theo phần tử pivot đã chọn, khi đó phần tử pivot đã 
+// nằm ở đúng vị trí trong mảng sau khi được sắp, tiếp tục gọi đệ quy quick sort với mỗi mảng con sau khi phân hoạch
+// Tài liệu tham khảo: video record thầy Phương, ngày 8-10-2021 phần 2
+// Link: https://drive.google.com/file/d/1MmJcIQSi24xjkbpAkR8cI91371xFNoFL/view
+
+// Hàm phân hoạch mảng từ vị trí left đến right, phần tử pivot là a[left]
+// trả về vị trí cuối của pivot
+int Partition(int *a, int left, int right) {
+    // Chọn pivot là phần tử ngoài cùng bên trái
+    int pivot = a[left];
+    
+    // Các biến chạy i chạy từ trái sang phải, j chạy từ phải sang trái
+    int i = left;
+    int j = right + 1;
+    do {
+        // Tăng i đến khi a[i] >= pivot
+        do
+            i++;
+        while (a[i] < pivot);
+
+        // Giảm j đến khi a[j] <= pivot
+        do
+            j--;
+        while (a[j] > pivot);
+
+        // Hoán vị a[i], a[j]
+        MySwapFunction(a[i], a[j]);
+
+        // Nếu i >= j thì thoát khỏi vòng lặp
+    } while (i < j);
+
+    // Hoán vị lại lần hoán vị cuối do ta chỉ hoán vị khi i < j
+    MySwapFunction(a[i], a[j]);
+
+    // Đưa pivot vào vị trí đúng của nó trong mảng được sắp
+    MySwapFunction(a[j], a[left]);
+    return j;
+}
+
+// Hàm quick sort chia để trị
+void QuickSort(int *a, int left, int right) {
+    if (left < right) {
+        int splitPos = Partition(a, left, right);
+        QuickSort(a, left, splitPos - 1);
+        QuickSort(a, splitPos + 1, right);
+    }
+}
+
+// Hàm quick sort trả về thời gian thực thi thuật toán
+long long QuickSortCalcTime(int *a, int n) {
+    auto start = chrono::high_resolution_clock::now();
+    QuickSort(a, 0, n - 1);
+    auto end = chrono::high_resolution_clock::now();
+    return chrono::duration_cast<chrono::milliseconds>(end - start).count();
+}
+
+// Hàm phân hoạch có đếm số phép so sánh
+int PartitionCountCompare(int *a, int left, int right, long long &cmp) {
+    // Chọn pivot là phần tử ngoài cùng bên trái
+    int pivot = a[left];
+    
+    // Các biến chạy i chạy từ trái sang phải, j chạy từ phải sang trái
+    int i = left;
+    int j = right + 1;
+    do {
+        // Tăng i đến khi a[i] >= pivot
+        do
+            i++;
+        while (++cmp && a[i] < pivot);
+
+        // Giảm j đến khi a[j] <= pivot
+        do
+            j--;
+        while (++cmp && a[j] > pivot);
+
+        // Hoán vị a[i], a[j]
+        MySwapFunction(a[i], a[j]);
+
+        // Nếu i >= j thì thoát khỏi vòng lặp
+    } while (++cmp && i < j);
+
+    // Hoán vị lại lần hoán vị cuối do ta chỉ hoán vị khi i < j
+    MySwapFunction(a[i], a[j]);
+
+    // Đưa pivot vào vị trí đúng của nó trong mảng được sắp
+    MySwapFunction(a[j], a[left]);
+    return j;
+}
+
+// Hàm quick sort chia để trị có đến số phép so sánh
+void QuickSortCountCompare(int *a, int left, int right, long long &cmp) {
+    if (++cmp && left < right) {
+        int splitPos = PartitionCountCompare(a, left, right, cmp);
+        QuickSortCountCompare(a, left, splitPos - 1, cmp);
+        QuickSortCountCompare(a, splitPos + 1, right, cmp);
+    }
+}
+
+// Hàm quick sort trả về số phép so sánh
+long long QuickSortCalcCompare(int *a, int n) {
+    long long cmp = 0;
+    QuickSortCountCompare(a, 0, n - 1, cmp);
+    return cmp;
+}
+
+//==========================================================================================================
+// Hàm sắp xếp đếm
+
+int FindMax(int *a, int n) {
+    int max = a[0];
+    for (int i = 1; i < n; i++)
+        if (max < a[i])
+            max = a[i];
+    return max;
+}
+
+void CountingSort(int *a, int n, int max) { 
+    // Giá trị count[i] là số lần xuất hiện của số i trong mảng a
+    int *count = new int[max+1]{0};    
+    for (int i=0; i<n; i++)                                  
+        count[a[i]]++;
+
+    // Xử lý lại mảng count
+    for (int i=1; i<=n; i++)       
+        count[i] += count[i-1];   
+
+    // Mảng temp để chứa kết quả sắp xếp 
+    int *temp = new int[n]{0};                    
+    for (int i = n-1; i >= 0; --i) {              
+        temp[--count[a[i]]] = a[i];  
+    }
+
+    // Sao chép mảng temp vào lại mảng a
+    for (int i = 0; i < n; i++)
+        a[i] = temp[i];
+
+    // Kết thúc thuật toán, trả lại bộ nhớ
+    delete[] count;
+    delete[] temp;
+}
+
+// Hàm sắp xếp đếm trả về số phép so sánh
+long long CountingSortCountCompare(int *a, int n, int max) {
+    long long cmp = 0;
+
+    // Giá trị count[i] là số lần xuất hiện của số i trong mảng a
+    int *count = new int[max+1]{0};    
+    for (int i=0; ++cmp && i<n; i++)                                  
+        count[a[i]]++;
+
+    // Xử lý lại mảng count
+    for (int i=1; ++cmp && i<=n; i++)       
+        count[i] += count[i-1];   
+
+    // Mảng temp để chứa kết quả sắp xếp 
+    int *temp = new int[n]{0};                    
+    for (int i = n-1; ++cmp && i >= 0; --i) {              
+        temp[--count[a[i]]] = a[i];  
+    }
+
+    // Sao chép mảng temp vào lại mảng a
+    for (int i = 0; ++cmp && i < n; i++)
+        a[i] = temp[i];
+
+    // Kết thúc thuật toán, trả lại bộ nhớ
+    delete[] count;
+    delete[] temp;
+
+    return cmp;
+}
+
+// Hàm sắp xếp đếm trả về thời gian thực thi
+long long CountingSortCalcTime(int *a, int n) {
+    int max = FindMax(a, n);
+    auto start = chrono::high_resolution_clock::now();
+    CountingSort(a, n, max);
+    auto end = chrono::high_resolution_clock::now();
+    return chrono::duration_cast<chrono::milliseconds>(end - start).count();
+}
+
+// Hàm sắp xếp đếm trả về số phép so sánh
+long long CountingSortCalcCompare(int *a, int n) {
+    int max = FindMax(a, n);
+    long long cmp = CountingSortCountCompare(a, n, max);
     return cmp;
 }

@@ -68,6 +68,9 @@ long long BubbleSortCountCompare(int a[], int n);
 // Hàm trả về thời gian thực thi hàm
 long long ShakerSort(int *a, int n);
 
+// Hàm trả về số phép so sánh
+long long ShakerSortCountCompare(int *a, int n);
+
 //============================================================================================================
 // SHELL SORT
 // Ý tưởng: với mỗi giá trị interval từ lớn đến nhỏ, chia mảng thành interval mảng con (mảng
@@ -79,7 +82,7 @@ long long ShakerSort(int *a, int n);
 long long ShellSort(int arr[], int n);
 
 // Hàm trả về số phép so sánh
-long long ShellSort(int arr[], int n);
+long long ShellSortCountCompare(int arr[], int n);
 
 //============================================================================================================
 // HEAP SORT
@@ -92,8 +95,14 @@ long long ShellSort(int arr[], int n);
 // Hàm trượt phần tử a[left] xuống đúng vị trí trong cây max-heap
 void sift(int *a, int left, int right);
 
+// Hàm trượt phần tử a[left] xuống đúng vị trí trong cây max-heap (trả về số phép so sánh)
+long long siftCountCompare(int *a, int left, int right);
+
 // Hàm trả về thời gian thực thi hàm
 long long HeapSort(int *a, int n);
+
+// Hàm trả về số phép so sánh
+long long HeapSortCountCompare(int *a, int n);
 
 //============================================================================================================
 // MERGE SORT
@@ -129,3 +138,47 @@ long long MergeSortCalcCompare(int *a, int n);
 
 //============================================================================================================
 // QUICK SORT
+// Ý tưởng: chọn phần tử pivot, sau đó phân hoạch mảng theo phần tử pivot đã chọn, khi đó phần tử pivot đã 
+// nằm ở đúng vị trí trong mảng sau khi được sắp, tiếp tục gọi đệ quy quick sort với mỗi mảng con sau khi phân hoạch
+// Tài liệu tham khảo: video record thầy Phương, ngày 8-10-2021 phần 2
+// Link: https://drive.google.com/file/d/1MmJcIQSi24xjkbpAkR8cI91371xFNoFL/view
+
+// Hàm phân hoạch mảng từ vị trí left đến right, phần tử pivot là a[left]
+// trả về vị trí cuối của pivot
+int Partition(int *a, int left, int right);
+
+// Hàm quick sort chia để trị
+void QuickSort(int *a, int left, int right);
+
+// Hàm quick sort trả về thời gian thực thi thuật toán
+long long QuickSortCalcTime(int *a, int n);
+
+// Hàm phân hoạch có đếm số phép so sánh
+int PartitionCountCompare(int *a, int left, int right, long long &cmp);
+
+// Hàm quick sort chia để trị có đến số phép so sánh
+void QuickSortCountCompare(int *a, int left, int right, long long &cmp);
+
+// Hàm quick sort trả về số phép so sánh
+long long QuickSortCalcCompare(int *a, int n);
+
+//==========================================================================================================
+// COUNTING SORT
+// Ý tưởng: không rõ
+// Tài liệu tham khảo: video record thầy Phương, ngày 15-10-2021 phần 2
+// Link: https://drive.google.com/file/d/1wHClVvwTVIGSiQqDsFm2koYLm9n6inHF/view
+
+// Hàm tìm giá trị lớn nhất của mảng số nguyên
+int FindMax(int *a, int n);
+
+// Hàm sắp xếp đếm
+void CountingSort(int *a, int n, int max);
+
+// Hàm sắp xếp đếm trả về số phép so sánh
+long long CountingSortCountCompare(int *a, int n, int max);
+
+// Hàm sắp xếp đếm trả về thời gian thực thi
+long long CountingSortCalcTime(int *a, int n);
+
+// Hàm sắp xếp đếm trả về số phép so sánh
+long long CountingSortCalcCompare(int *a, int n);
