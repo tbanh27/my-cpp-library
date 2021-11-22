@@ -214,3 +214,19 @@ long long LSDRadixSortCalcTime(int *a, int n);
 
 // Hàm sắp xếp theo cơ số trả về số phép so sánh
 long long LSDRadixSortCalcCompare(int *a, int n);
+
+//==========================================================================================================
+// FLASH SORT
+
+// Hàm trả về giá trị nhỏ nhất trong mảng
+int FindMin(int *a, int n);
+
+long long CalcKFlashSort(long long m, long long a, long long max, long long min);
+
+void FlashSort(int *a, int n, int min, int max);
+
+void FlashSortCountCompare(int *a, int n, int min, int max, long long &cmp);
+
+long long FlashSortCalcTime(int *a, int n);
+
+long long FlashSortCalcCompare(int *a, int n);

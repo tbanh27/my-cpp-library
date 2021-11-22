@@ -1,0 +1,265 @@
+algorithm,data order,data size,used time (milisecs),comparisons
+selection sort,Randomize,10000,132,100009999
+selection sort,Randomize,30000,1189,900029999
+selection sort,Randomize,50000,3317,2500049999
+selection sort,Randomize,100000,12923,10000099999
+selection sort,Randomize,300000,119976,90000299999
+selection sort,Randomize,500000,324367,250000499999
+insertion sort,Randomize,10000,59,25232369
+insertion sort,Randomize,30000,438,224507008
+insertion sort,Randomize,50000,1214,626307938
+insertion sort,Randomize,100000,4779,2506993621
+insertion sort,Randomize,300000,43498,22541070471
+insertion sort,Randomize,500000,121092,62433751926
+bubble sort,Randomize,10000,339,99922165
+bubble sort,Randomize,30000,3244,899856365
+bubble sort,Randomize,50000,9190,2499681024
+bubble sort,Randomize,100000,37453,10000268920
+bubble sort,Randomize,300000,340145,89999475163
+bubble sort,Randomize,500000,947225,249989968510
+shaker sort,Randomize,10000,283,66862675
+shaker sort,Randomize,30000,2524,604642815
+shaker sort,Randomize,50000,6950,1672149668
+shaker sort,Randomize,100000,27914,6682131428
+shaker sort,Randomize,300000,251404,60082160914
+shaker sort,Randomize,500000,607460,166729103363
+shell sort,Randomize,10000,2,673334
+shell sort,Randomize,30000,8,2358756
+shell sort,Randomize,50000,14,4581586
+shell sort,Randomize,100000,28,9990780
+shell sort,Randomize,300000,96,36188071
+shell sort,Randomize,500000,164,65533839
+heap sort,Randomize,10000,1,497034
+heap sort,Randomize,30000,6,1680850
+heap sort,Randomize,50000,10,2952581
+heap sort,Randomize,100000,22,6304082
+heap sort,Randomize,300000,74,20800398
+heap sort,Randomize,500000,125,36120063
+merge sort,Randomize,10000,2,572672
+merge sort,Randomize,30000,32,1905575
+merge sort,Randomize,50000,18,3327272
+merge sort,Randomize,100000,23,7054678
+merge sort,Randomize,300000,66,23059975
+merge sort,Randomize,500000,114,39867883
+quick sort,Randomize,10000,1,201147
+quick sort,Randomize,30000,4,676931
+quick sort,Randomize,50000,7,1201239
+quick sort,Randomize,100000,17,2504958
+quick sort,Randomize,300000,53,8253389
+quick sort,Randomize,500000,87,14461331
+counting sort,Randomize,10000,0,40003
+counting sort,Randomize,30000,0,120003
+counting sort,Randomize,50000,1,200003
+counting sort,Randomize,100000,2,400000
+counting sort,Randomize,300000,11,1200001
+counting sort,Randomize,500000,29,2000001
+radix sort,Randomize,10000,3,120057
+radix sort,Randomize,30000,12,450071
+radix sort,Randomize,50000,19,750071
+radix sort,Randomize,100000,38,1500071
+radix sort,Randomize,300000,134,5400085
+radix sort,Randomize,500000,216,9000085
+flash sort,Randomize,10000,0,57327
+flash sort,Randomize,30000,2,162625
+flash sort,Randomize,50000,6,272140
+flash sort,Randomize,100000,9,552312
+flash sort,Randomize,300000,39,1767903
+flash sort,Randomize,500000,67,2991370
+selection sort,Sorted,10000,134,100009999
+selection sort,Sorted,30000,1077,900029999
+selection sort,Sorted,50000,2990,2500049999
+selection sort,Sorted,100000,11873,10000099999
+selection sort,Sorted,300000,106857,90000299999
+selection sort,Sorted,500000,296352,250000499999
+insertion sort,Sorted,10000,0,10000
+insertion sort,Sorted,30000,0,30000
+insertion sort,Sorted,50000,0,50000
+insertion sort,Sorted,100000,0,100000
+insertion sort,Sorted,300000,0,300000
+insertion sort,Sorted,500000,2,500000
+bubble sort,Sorted,10000,0,20001
+bubble sort,Sorted,30000,0,60001
+bubble sort,Sorted,50000,0,100001
+bubble sort,Sorted,100000,0,200001
+bubble sort,Sorted,300000,1,600001
+bubble sort,Sorted,500000,1,1000001
+shaker sort,Sorted,10000,0,39997
+shaker sort,Sorted,30000,0,119997
+shaker sort,Sorted,50000,0,199997
+shaker sort,Sorted,100000,0,399997
+shaker sort,Sorted,300000,1,1199997
+shaker sort,Sorted,500000,2,1999997
+shell sort,Sorted,10000,0,360042
+shell sort,Sorted,30000,1,1170050
+shell sort,Sorted,50000,3,2100049
+shell sort,Sorted,100000,10,4500051
+shell sort,Sorted,300000,59,15300061
+shell sort,Sorted,500000,36,25500058
+heap sort,Sorted,10000,1,518705
+heap sort,Sorted,30000,5,1739633
+heap sort,Sorted,50000,8,3056481
+heap sort,Sorted,100000,16,6519813
+heap sort,Sorted,300000,52,21431637
+heap sort,Sorted,500000,81,37116275
+merge sort,Sorted,10000,1,456443
+merge sort,Sorted,30000,2,1513467
+merge sort,Sorted,50000,4,2633947
+merge sort,Sorted,100000,10,5567899
+merge sort,Sorted,300000,34,18108315
+merge sort,Sorted,500000,57,31336411
+quick sort,Sorted,10000,0,160864
+quick sort,Sorted,30000,1,518313
+quick sort,Sorted,50000,3,946618
+quick sort,Sorted,100000,5,1993227
+quick sort,Sorted,300000,17,6227157
+quick sort,Sorted,500000,31,10572877
+counting sort,Sorted,10000,0,40003
+counting sort,Sorted,30000,0,120003
+counting sort,Sorted,50000,0,200003
+counting sort,Sorted,100000,1,400003
+counting sort,Sorted,300000,4,1200003
+counting sort,Sorted,500000,10,2000003
+radix sort,Sorted,10000,4,120057
+radix sort,Sorted,30000,11,450071
+radix sort,Sorted,50000,21,750071
+radix sort,Sorted,100000,38,1500071
+radix sort,Sorted,300000,131,5400085
+radix sort,Sorted,500000,215,9000085
+flash sort,Sorted,10000,0,78600
+flash sort,Sorted,30000,1,235800
+flash sort,Sorted,50000,3,393000
+flash sort,Sorted,100000,5,786000
+flash sort,Sorted,300000,18,2358000
+flash sort,Sorted,500000,32,3930000
+selection sort,Reverse,10000,122,100009999
+selection sort,Reverse,30000,1028,900029999
+selection sort,Reverse,50000,2855,2500049999
+selection sort,Reverse,100000,11392,10000099999
+selection sort,Reverse,300000,102385,90000299999
+selection sort,Reverse,500000,284788,250000499999
+insertion sort,Reverse,10000,107,50252260
+insertion sort,Reverse,30000,792,450849494
+insertion sort,Reverse,50000,2182,1251493960
+insertion sort,Reverse,100000,8708,5003187890
+insertion sort,Reverse,300000,78463,45010501462
+insertion sort,Reverse,500000,218387,125018201462
+bubble sort,Reverse,10000,293,100039998
+bubble sort,Reverse,30000,2528,900119998
+bubble sort,Reverse,50000,7025,2500199998
+bubble sort,Reverse,100000,27908,10000399998
+bubble sort,Reverse,300000,251643,90001199998
+bubble sort,Reverse,500000,700340,250001999998
+shaker sort,Reverse,10000,287,100005000
+shaker sort,Reverse,30000,2496,900015000
+shaker sort,Reverse,50000,6908,2500025000
+shaker sort,Reverse,100000,27626,10000050000
+shaker sort,Reverse,300000,248937,90000150000
+shaker sort,Reverse,500000,693702,250000250000
+shell sort,Reverse,10000,0,475175
+shell sort,Reverse,30000,2,1554051
+shell sort,Reverse,50000,6,2844628
+shell sort,Reverse,100000,9,6089190
+shell sort,Reverse,300000,30,20001852
+shell sort,Reverse,500000,52,33857581
+heap sort,Reverse,10000,1,476739
+heap sort,Reverse,30000,4,1622791
+heap sort,Reverse,50000,8,2848016
+heap sort,Reverse,100000,16,6087452
+heap sort,Reverse,300000,50,20187386
+heap sort,Reverse,500000,84,35135730
+merge sort,Reverse,10000,1,475242
+merge sort,Reverse,30000,2,1559914
+merge sort,Reverse,50000,6,2722826
+merge sort,Reverse,100000,12,5745658
+merge sort,Reverse,300000,33,18645946
+merge sort,Reverse,500000,100,32017850
+quick sort,Reverse,10000,0,165863
+quick sort,Reverse,30000,1,533312
+quick sort,Reverse,50000,2,971617
+quick sort,Reverse,100000,6,2043226
+quick sort,Reverse,300000,18,6377156
+quick sort,Reverse,500000,31,10822876
+counting sort,Reverse,10000,0,40003
+counting sort,Reverse,30000,0,120003
+counting sort,Reverse,50000,0,200003
+counting sort,Reverse,100000,1,400003
+counting sort,Reverse,300000,4,1200003
+counting sort,Reverse,500000,6,2000003
+radix sort,Reverse,10000,2,120057
+radix sort,Reverse,30000,13,450071
+radix sort,Reverse,50000,19,750071
+radix sort,Reverse,100000,40,1500071
+radix sort,Reverse,300000,135,5400085
+radix sort,Reverse,500000,217,9000085
+flash sort,Reverse,10000,1,63553
+flash sort,Reverse,30000,1,190653
+flash sort,Reverse,50000,2,317753
+flash sort,Reverse,100000,6,635503
+flash sort,Reverse,300000,16,1906503
+flash sort,Reverse,500000,26,3177503
+selection sort,Nearly sorted,10000,126,100009999
+selection sort,Nearly sorted,30000,1081,900029999
+selection sort,Nearly sorted,50000,2991,2500049999
+selection sort,Nearly sorted,100000,11922,10000099999
+selection sort,Nearly sorted,300000,107332,90000299999
+selection sort,Nearly sorted,500000,297748,250000499999
+insertion sort,Nearly sorted,10000,0,313618
+insertion sort,Nearly sorted,30000,2,901950
+insertion sort,Nearly sorted,50000,4,1923316
+insertion sort,Nearly sorted,100000,8,3854430
+insertion sort,Nearly sorted,300000,28,11695538
+insertion sort,Nearly sorted,500000,44,19851316
+bubble sort,Nearly sorted,10000,124,92734468
+bubble sort,Nearly sorted,30000,673,785293393
+bubble sort,Nearly sorted,50000,1959,1917184842
+bubble sort,Nearly sorted,100000,10674,9104817237
+bubble sort,Nearly sorted,300000,64109,66309708689
+bubble sort,Nearly sorted,500000,306603,177285687166
+shaker sort,Nearly sorted,10000,0,179285
+shaker sort,Nearly sorted,30000,1,537548
+shaker sort,Nearly sorted,50000,6,1046006
+shaker sort,Nearly sorted,100000,6,1968435
+shaker sort,Nearly sorted,300000,14,4926469
+shaker sort,Nearly sorted,500000,19,7371223
+shell sort,Nearly sorted,10000,1,409901
+shell sort,Nearly sorted,30000,2,1306526
+shell sort,Nearly sorted,50000,5,2434177
+shell sort,Nearly sorted,100000,8,5109218
+shell sort,Nearly sorted,300000,28,16532755
+shell sort,Nearly sorted,500000,41,27486906
+heap sort,Nearly sorted,10000,1,518537
+heap sort,Nearly sorted,30000,4,1739665
+heap sort,Nearly sorted,50000,6,3056543
+heap sort,Nearly sorted,100000,16,6519388
+heap sort,Nearly sorted,300000,49,21433171
+heap sort,Nearly sorted,500000,89,37112398
+merge sort,Nearly sorted,10000,0,489555
+merge sort,Nearly sorted,30000,3,1599218
+merge sort,Nearly sorted,50000,6,2799024
+merge sort,Nearly sorted,100000,12,5934012
+merge sort,Nearly sorted,300000,34,19095060
+merge sort,Nearly sorted,500000,56,33020976
+quick sort,Nearly sorted,10000,0,160886
+quick sort,Nearly sorted,30000,1,518337
+quick sort,Nearly sorted,50000,3,946636
+quick sort,Nearly sorted,100000,6,1993245
+quick sort,Nearly sorted,300000,18,6227177
+quick sort,Nearly sorted,500000,28,10572889
+counting sort,Nearly sorted,10000,0,40003
+counting sort,Nearly sorted,30000,0,120003
+counting sort,Nearly sorted,50000,0,200003
+counting sort,Nearly sorted,100000,1,400003
+counting sort,Nearly sorted,300000,3,1200003
+counting sort,Nearly sorted,500000,7,2000003
+radix sort,Nearly sorted,10000,3,120057
+radix sort,Nearly sorted,30000,13,450071
+radix sort,Nearly sorted,50000,20,750071
+radix sort,Nearly sorted,100000,39,1500071
+radix sort,Nearly sorted,300000,130,5400085
+radix sort,Nearly sorted,500000,217,9000085
+flash sort,Nearly sorted,10000,0,78577
+flash sort,Nearly sorted,30000,1,235777
+flash sort,Nearly sorted,50000,3,392974
+flash sort,Nearly sorted,100000,6,785977
+flash sort,Nearly sorted,300000,20,2357976
+flash sort,Nearly sorted,500000,30,3929976

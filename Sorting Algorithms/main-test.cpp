@@ -34,132 +34,121 @@ string getOrder(int i) {
 int main() {
     int *array = new int[500000];
 
-    fstream out;
-    out.open("result.txt", ios::out);
+    ofstream out;
+    out.open("result.csv");
 
-    cout << "STARTED...\n";
+    out << "algorithm,data order,data size,used time (milisecs),comparisons\n";
 
     for (int order = 0; order < 4; order++) {
-        out << "##################################################################\n";
-        /*for (int size = 0; size < 6; size++) {
+        for (int size = 0; size < 6; size++) {
             int dataSize = dataSizes[size];
             string dataOrder = getOrder(order);
             GenerateData(array, dataSize, order);
-            out << "Selection Sort:\n";
-            out << "Order: " << dataOrder << "\n";
-            out << "Size: " << dataSize << endl;
-            out << "Used Time: " << SelectionSort(array, dataSize) << " milisecs\n";
+            out << "selection sort" << "," << dataOrder << "," << dataSize << ",";
+            out << SelectionSort(array, dataSize) << ",";
             GenerateData(array, dataSize, order);
-            out << "Comparisons: " << SelectionSortCountCompare(array, dataSize) << "\n";
+            out << SelectionSortCountCompare(array, dataSize) << "\n"; 
             cout << "Selection Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
         }
         for (int size = 0; size < 6; size++) {
             int dataSize = dataSizes[size];
             string dataOrder = getOrder(order);
             GenerateData(array, dataSize, order);
-            out << "\n\nInsertion Sort:\n";
-            out << "Order: " << dataOrder << "\n";
-            out << "Size: " << dataSize << endl;
-            out << "Used Time: " << BinaryInsertionSort(array, dataSize) << " milisecs\n";
+            out << "insertion sort" << "," << dataOrder << "," << dataSize << ",";
+            out << BinaryInsertionSort(array, dataSize) << ",";
             GenerateData(array, dataSize, order);
-            out << "Comparisons: " << BinaryInsertionSortCountCompare(array, dataSize) << "\n";
+            out << BinaryInsertionSortCountCompare(array, dataSize) << "\n"; 
             cout << "Insertion Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
         }
         for (int size = 0; size < 6; size++) {
             int dataSize = dataSizes[size];
             string dataOrder = getOrder(order);
             GenerateData(array, dataSize, order);
-            out << "\n\nBubble Sort:\n";
-            out << "Order: " << dataOrder << "\n";
-            out << "Size: " << dataSize << endl;
-            out << "Used Time: " << BubbleSort(array, dataSize) << " milisecs\n";
+            out << "bubble sort" << "," << dataOrder << "," << dataSize << ",";
+            out << BubbleSort(array, dataSize) << ",";
             GenerateData(array, dataSize, order);
-            out << "Comparisons: " << BubbleSortCountCompare(array, dataSize) << "\n";
+            out << BubbleSortCountCompare(array, dataSize) << "\n"; 
             cout << "Bubble Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
         }
         for (int size = 0; size < 6; size++) {
             int dataSize = dataSizes[size];
             string dataOrder = getOrder(order);
             GenerateData(array, dataSize, order);
-            out << "\n\nShaker Sort:\n";
-            out << "Order: " << dataOrder << "\n";
-            out << "Size: " << dataSize << endl;
-            out << "Used Time: " << ShakerSort(array, dataSize) << " milisecs\n";
+            out << "shaker sort" << "," << dataOrder << "," << dataSize << ",";
+            out << ShakerSort(array, dataSize) << ",";
             GenerateData(array, dataSize, order);
-            out << "Comparisons: " << ShakerSortCountCompare(array, dataSize) << "\n";
+            out << ShakerSortCountCompare(array, dataSize) << "\n"; 
             cout << "Shaker Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
-        }*/
-        /*for (int size = 0; size < 6; size++) {
-            int dataSize = dataSizes[size];
-            string dataOrder = getOrder(order);
-            GenerateData(array, dataSize, order);
-            out << "\n\nShell Sort:\n";
-            out << "Order: " << dataOrder << "\n";
-            out << "Size: " << dataSize << endl;
-            out << "Used Time: " << ShellSort(array, dataSize) << " milisecs\n";
-            //GenerateData(array, dataSize, order);
-            //out << "Comparisons: " << ShakerSortCountCompare(array, dataSize) << "\n";
-            cout << "Shell Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
-        }*/
+        }
         for (int size = 0; size < 6; size++) {
             int dataSize = dataSizes[size];
             string dataOrder = getOrder(order);
             GenerateData(array, dataSize, order);
-            out << "\n\nHeap Sort:\n";
-            out << "Order: " << dataOrder << "\n";
-            out << "Size: " << dataSize << endl;
-            out << "Used Time: " << HeapSort(array, dataSize) << " milisecs\n";
+            out << "shell sort" << "," << dataOrder << "," << dataSize << ",";
+            out << ShellSort(array, dataSize) << ",";
             GenerateData(array, dataSize, order);
-            out << "Comparisons: " << HeapSortCountCompare(array, dataSize) << "\n";
+            out << ShellSortCountCompare(array, dataSize) << "\n"; 
+            cout << "Shell Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
+        }
+        for (int size = 0; size < 6; size++) {
+            int dataSize = dataSizes[size];
+            string dataOrder = getOrder(order);
+            GenerateData(array, dataSize, order);
+            out << "heap sort" << "," << dataOrder << "," << dataSize << ",";
+            out << HeapSort(array, dataSize) << ",";
+            GenerateData(array, dataSize, order);
+            out << HeapSortCountCompare(array, dataSize) << "\n"; 
             cout << "Heap Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
         }
         for (int size = 0; size < 6; size++) {
             int dataSize = dataSizes[size];
             string dataOrder = getOrder(order);
             GenerateData(array, dataSize, order);
-            out << "\n\nMerge Sort:\n";
-            out << "Order: " << dataOrder << "\n";
-            out << "Size: " << dataSize << endl;
-            out << "Used Time: " << MergeSortCalcTime(array, dataSize) << " milisecs\n";
+            out << "merge sort" << "," << dataOrder << "," << dataSize << ",";
+            out << MergeSortCalcTime(array, dataSize) << ",";
             GenerateData(array, dataSize, order);
-            out << "Comparisons: " << MergeSortCalcCompare(array, dataSize) << "\n";
+            out << MergeSortCalcCompare(array, dataSize) << "\n"; 
             cout << "Merge Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
         }
         for (int size = 0; size < 6; size++) {
             int dataSize = dataSizes[size];
             string dataOrder = getOrder(order);
             GenerateData(array, dataSize, order);
-            out << "\n\nQuick Sort:\n";
-            out << "Order: " << dataOrder << "\n";
-            out << "Size: " << dataSize << endl;
-            out << "Used Time: " << QuickSortCalcTime(array, dataSize) << " milisecs\n";
+            out << "quick sort" << "," << dataOrder << "," << dataSize << ",";
+            out << QuickSortCalcTime(array, dataSize) << ",";
             GenerateData(array, dataSize, order);
-            out << "Comparisons: " << QuickSortCalcCompare(array, dataSize) << "\n";
+            out << QuickSortCalcCompare(array, dataSize) << "\n"; 
             cout << "Quick Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
         }
         for (int size = 0; size < 6; size++) {
             int dataSize = dataSizes[size];
             string dataOrder = getOrder(order);
             GenerateData(array, dataSize, order);
-            out << "\n\nCounting Sort:\n";
-            out << "Order: " << dataOrder << "\n";
-            out << "Size: " << dataSize << endl;
-            out << "Used Time: " << CountingSortCalcTime(array, dataSize) << " milisecs\n";
+            out << "counting sort" << "," << dataOrder << "," << dataSize << ",";
+            out << CountingSortCalcTime(array, dataSize) << ",";
             GenerateData(array, dataSize, order);
-            out << "Comparisons: " << CountingSortCalcCompare(array, dataSize) << "\n";
+            out << CountingSortCalcCompare(array, dataSize) << "\n"; 
             cout << "Counting Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
         }
         for (int size = 0; size < 6; size++) {
             int dataSize = dataSizes[size];
             string dataOrder = getOrder(order);
             GenerateData(array, dataSize, order);
-            out << "\n\nRadix Sort:\n";
-            out << "Order: " << dataOrder << "\n";
-            out << "Size: " << dataSize << endl;
-            out << "Used Time: " << LSDRadixSortCalcTime(array, dataSize) << " milisecs\n";
+            out << "radix sort" << "," << dataOrder << "," << dataSize << ",";
+            out << LSDRadixSortCalcTime(array, dataSize) << ",";
             GenerateData(array, dataSize, order);
-            out << "Comparisons: " << LSDRadixSortCalcCompare(array, dataSize) << "\n";
-            cout << "LSD Radix Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
+            out << LSDRadixSortCalcCompare(array, dataSize) << "\n"; 
+            cout << "Radix Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
+        }
+        for (int size = 0; size < 6; size++) {
+            int dataSize = dataSizes[size];
+            string dataOrder = getOrder(order);
+            GenerateData(array, dataSize, order);
+            out << "flash sort" << "," << dataOrder << "," << dataSize << ",";
+            out << FlashSortCalcTime(array, dataSize) << ",";
+            GenerateData(array, dataSize, order);
+            out << FlashSortCalcCompare(array, dataSize) << "\n"; 
+            cout << "Flash Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
         }
     }
 

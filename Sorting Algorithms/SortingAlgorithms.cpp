@@ -75,6 +75,11 @@ long long BinaryInsertionSort(int a[], int n) {
     for (int i = 1; i < n; i++) {
         int valueToInsert = a[i];
 
+        // Vì mảng tử a[0] đến a[i-1] đã được sắp tăng
+        // nên nếu a[i] >= a[i-1] thì khỏi chèn làm gì
+        if (a[i] >= a[i-1])
+            continue;
+
         // Dùng tìm kiếm nhị phân để tìm posToInsert
         int posToInsert;
         int left = 0, right = i - 1;
@@ -104,6 +109,11 @@ long long BinaryInsertionSortCountCompare(int a[], int n) {
     long long compare = 0;
     for (int i = 1; ++compare && i < n; i++) {
         int valueToInsert = a[i];
+
+        // Vì mảng tử a[0] đến a[i-1] đã được sắp tăng
+        // nên nếu a[i] >= a[i-1] thì khỏi chèn làm gì
+        if (a[i] >= a[i-1])
+            continue;
 
         // Dùng tìm kiếm nhị phân để tìm posToInsert
         int posToInsert;
@@ -800,5 +810,172 @@ long long LSDRadixSortCalcCompare(int *a, int n) {
     long long cmp = 0;
     int d = CalcDRadixSort(a, n);
     LSDRadixSortCountCmp(a, n, d, cmp);
+    return cmp;
+}
+
+//==========================================================================================================
+// FLASH SORT
+
+// Hàm trả về giá trị nhỏ nhất trong mảng
+int FindMin(int *a, int n) {
+    int min = a[0];
+    for (int i = 1; i < n; i++)
+        if (a[i] < min)
+            min = a[i];
+    return min;
+}
+
+long long CalcKFlashSort(long long m, long long a, long long max, long long min) {
+    return (m - 1) * (a - min) / (max - min);
+}
+
+void FlashSort(int *a, int n, int min, int max) {
+    // Xác định số phân lớp
+    int m = (int) (0.43 * (double)n);
+    int k;
+
+    // Mảng L chứa số phần tử thuộc mỗi phân lớp
+    int *L = new int[m]{0};
+
+    // Đếm số phần tử của từng phân lớp
+    for (int i = 0; i < n; i++) {
+        k = CalcKFlashSort(m, a[i], max, min);
+        L[k]++;
+    }
+
+    // Xử lý mảng L để L[k] là vị trí biên phải của phân lớp k
+    L[0] -= 1;
+    for (int i = 1; i < m; i++)
+        L[i] += L[i - 1];
+    
+    // Phân hoạch các phần tử
+    int count = 1;  // Số phần tử đã được phân hoạch
+    int i = 0;
+    k = m - 1;
+    int y;
+    while (count <= n) {
+        while (i > L[k]) {
+            i++;
+            k = CalcKFlashSort(m, a[i], max, min);
+        }
+        int x = a[i];
+        while (i <= L[k]) {
+            k = CalcKFlashSort(m, x, max, min);
+            y = a[L[k]];
+            a[L[k]] = x;
+            x = y;
+            L[k]--;
+            count++;
+        }
+    }
+
+    // Sắp xếp từng phân lớp
+    int t, j;
+    // k đi từ 1 đến m-1, tức là ta sắp xếp các phân lớp từ 0 đến m-2
+    for (int k = 1; k < m; k++) {
+        // Sắp xếp chèn phân lớp k-1
+        // i đi từ L[k]-1 đến L[k-1]+1
+        // tức là từ phần tử kế cuối của phân lớp k-1 đến phần tử đầu tiên của phân lớp k-1
+        for (int i = L[k] - 1; i > L[k - 1]; --i) {
+            // Các phần tử a[i+1], a[i+2]... đã được sắp tăng, nên ta chỉ chèn a[i] vào nếu
+            // a[i] > a[i+1]
+            if (a[i] > a[i + 1]) {
+                // Biến t giữ giá trị cần chèn là a[i]
+                t = a[i];
+                // Biến j để tìm vị trí thích hợp để chèn t
+                j = i;
+                while (t > a[j + 1]) {
+                    a[j++] = a[j + 1];
+                }
+                // Vòng lặp dừng khi t <= a[j+1]
+                a[j] = t;
+            }
+        }
+    }
+
+    delete[] L;
+}
+
+void FlashSortCountCompare(int *a, int n, int min, int max, long long &cmp) {
+    // Xác định số phân lớp
+    int m = (int) (0.43 * (double)n);
+    int k;
+
+    // Mảng L chứa số phần tử thuộc mỗi phân lớp
+    int *L = new int[m]{0};
+
+    // Đếm số phần tử của từng phân lớp
+    for (int i = 0; ++cmp && i < n; i++) {
+        k = CalcKFlashSort(m, a[i], max, min);
+        L[k]++;
+    }
+
+    // Xử lý mảng L để L[k] là vị trí biên phải của phân lớp k
+    L[0] -= 1;
+    for (int i = 1; ++cmp && i < m; i++)
+        L[i] += L[i - 1];
+    
+    // Phân hoạch các phần tử
+    int count = 1;  // Số phần tử đã được phân hoạch
+    int i = 0;
+    k = m - 1;
+    int y;
+    while (++cmp && count <= n) {
+        while (++cmp && i > L[k]) {
+            i++;
+            k = CalcKFlashSort(m, a[i], max, min);
+        }
+        int x = a[i];
+        while (++cmp && i <= L[k]) {
+            k = CalcKFlashSort(m, x, max, min);
+            y = a[L[k]];
+            a[L[k]] = x;
+            x = y;
+            L[k]--;
+            count++;
+        }
+    }
+
+    // Sắp xếp từng phân lớp
+    int t, j;
+    // k đi từ 1 đến m-1, tức là ta sắp xếp các phân lớp từ 0 đến m-2
+    for (int k = 1; ++cmp && k < m; k++) {
+        // Sắp xếp chèn phân lớp k-1
+        // i đi từ L[k]-1 đến L[k-1]+1
+        // tức là từ phần tử kế cuối của phân lớp k-1 đến phần tử đầu tiên của phân lớp k-1
+        for (int i = L[k] - 1; ++cmp && i > L[k - 1]; --i) {
+            // Các phần tử a[i+1], a[i+2]... đã được sắp tăng, nên ta chỉ chèn a[i] vào nếu
+            // a[i] > a[i+1]
+            if (++cmp && a[i] > a[i + 1]) {
+                // Biến t giữ giá trị cần chèn là a[i]
+                t = a[i];
+                // Biến j để tìm vị trí thích hợp để chèn t
+                j = i;
+                while (++cmp && t > a[j + 1]) {
+                    a[j++] = a[j + 1];
+                }
+                // Vòng lặp dừng khi t <= a[j+1]
+                a[j] = t;
+            }
+        }
+    }
+
+    delete[] L;
+}
+
+long long FlashSortCalcTime(int *a, int n) {
+    int min = FindMin(a, n);
+    int max = FindMax(a, n);
+    auto start = chrono::high_resolution_clock::now();
+    FlashSort(a, n, min, max);
+    auto end = chrono::high_resolution_clock::now();
+    return chrono::duration_cast<chrono::milliseconds>(end - start).count();
+}
+
+long long FlashSortCalcCompare(int *a, int n) {
+    int min = FindMin(a, n);
+    int max = FindMax(a, n);
+    long long cmp = 0;
+    FlashSortCountCompare(a, n, min, max, cmp);
     return cmp;
 }
