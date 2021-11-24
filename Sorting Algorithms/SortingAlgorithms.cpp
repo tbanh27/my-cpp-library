@@ -151,7 +151,7 @@ long long BubbleSort(int a[], int n) {
     int left = 0, right = n - 1;
     while (left <= right) {
         bool isSwapped = false;
-        int lastSwapPos = right;
+        int lastSwapPos = left + 1;
         for (int j = left; j < right; ++j) {
             if (a[j] > a[j + 1]) {
                 MySwapFunction(a[j], a[j + 1]);
@@ -174,7 +174,7 @@ long long BubbleSortCountCompare(int a[], int n) {
     int left = 0, right = n - 1;
     while (++compare && left <= right) {
         bool isSwapped = false;
-        int lastSwapPos = right;
+        int lastSwapPos = left + 1;
         for (int j = left; ++compare && j < right; ++j) {
             if (++compare && a[j] > a[j + 1]) {
                 MySwapFunction(a[j], a[j + 1]);
@@ -195,7 +195,7 @@ long long BubbleSortCountCompare(int a[], int n) {
 long long ShakerSort(int *a, int n) {
     auto start = chrono::high_resolution_clock::now();
     int left = 0, right = n - 1;
-    int lastSwapPos = n - 1;
+    int lastSwapPos = left + 1;
     do {
         for (int j = left; j < right; j++) {
             if (a[j] > a[j+1]) {
@@ -221,7 +221,7 @@ long long ShakerSort(int *a, int n) {
 long long ShakerSortCountCompare(int *a, int n) {
     long long cmp = 0;
     int left = 0, right = n - 1;
-    int lastSwapPos = n - 1;
+    int lastSwapPos = left + 1;
     do {
         for (int j = left; ++cmp && j < right; j++) {
             if (++cmp && a[j] > a[j+1]) {

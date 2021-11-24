@@ -4,7 +4,7 @@ selection sort,Randomize,30000,1189,900029999
 selection sort,Randomize,50000,3317,2500049999
 selection sort,Randomize,100000,12923,10000099999
 selection sort,Randomize,300000,119976,90000299999
-selection sort,Randomize,500000,324367,250000499999
+selection sort,Randomize,500000,324367,2.50E+11
 insertion sort,Randomize,10000,59,25232369
 insertion sort,Randomize,30000,438,224507008
 insertion sort,Randomize,50000,1214,626307938
@@ -16,13 +16,13 @@ bubble sort,Randomize,30000,3244,899856365
 bubble sort,Randomize,50000,9190,2499681024
 bubble sort,Randomize,100000,37453,10000268920
 bubble sort,Randomize,300000,340145,89999475163
-bubble sort,Randomize,500000,947225,249989968510
+bubble sort,Randomize,500000,947225,2.50E+11
 shaker sort,Randomize,10000,283,66862675
 shaker sort,Randomize,30000,2524,604642815
 shaker sort,Randomize,50000,6950,1672149668
 shaker sort,Randomize,100000,27914,6682131428
 shaker sort,Randomize,300000,251404,60082160914
-shaker sort,Randomize,500000,607460,166729103363
+shaker sort,Randomize,500000,607460,1.67E+11
 shell sort,Randomize,10000,2,673334
 shell sort,Randomize,30000,8,2358756
 shell sort,Randomize,50000,14,4581586
@@ -70,7 +70,7 @@ selection sort,Sorted,30000,1077,900029999
 selection sort,Sorted,50000,2990,2500049999
 selection sort,Sorted,100000,11873,10000099999
 selection sort,Sorted,300000,106857,90000299999
-selection sort,Sorted,500000,296352,250000499999
+selection sort,Sorted,500000,296352,2.50E+11
 insertion sort,Sorted,10000,0,10000
 insertion sort,Sorted,30000,0,30000
 insertion sort,Sorted,50000,0,50000
@@ -81,14 +81,14 @@ bubble sort,Sorted,10000,0,20001
 bubble sort,Sorted,30000,0,60001
 bubble sort,Sorted,50000,0,100001
 bubble sort,Sorted,100000,0,200001
-bubble sort,Sorted,300000,1,600001
+bubble sort,Sorted,300000,0,600001
 bubble sort,Sorted,500000,1,1000001
-shaker sort,Sorted,10000,0,39997
-shaker sort,Sorted,30000,0,119997
-shaker sort,Sorted,50000,0,199997
-shaker sort,Sorted,100000,0,399997
-shaker sort,Sorted,300000,1,1199997
-shaker sort,Sorted,500000,2,1999997
+shaker sort,Sorted,10000,0,20001
+shaker sort,Sorted,30000,0,60001
+shaker sort,Sorted,50000,0,100001
+shaker sort,Sorted,100000,0,200001
+shaker sort,Sorted,300000,1,600001
+shaker sort,Sorted,500000,2,1000001
 shell sort,Sorted,10000,0,360042
 shell sort,Sorted,30000,1,1170050
 shell sort,Sorted,50000,3,2100049
@@ -136,25 +136,25 @@ selection sort,Reverse,30000,1028,900029999
 selection sort,Reverse,50000,2855,2500049999
 selection sort,Reverse,100000,11392,10000099999
 selection sort,Reverse,300000,102385,90000299999
-selection sort,Reverse,500000,284788,250000499999
+selection sort,Reverse,500000,284788,2.50E+11
 insertion sort,Reverse,10000,107,50252260
 insertion sort,Reverse,30000,792,450849494
 insertion sort,Reverse,50000,2182,1251493960
 insertion sort,Reverse,100000,8708,5003187890
 insertion sort,Reverse,300000,78463,45010501462
-insertion sort,Reverse,500000,218387,125018201462
+insertion sort,Reverse,500000,218387,1.25E+11
 bubble sort,Reverse,10000,293,100039998
 bubble sort,Reverse,30000,2528,900119998
 bubble sort,Reverse,50000,7025,2500199998
 bubble sort,Reverse,100000,27908,10000399998
 bubble sort,Reverse,300000,251643,90001199998
-bubble sort,Reverse,500000,700340,250001999998
+bubble sort,Reverse,500000,700340,2.50E+11
 shaker sort,Reverse,10000,287,100005000
 shaker sort,Reverse,30000,2496,900015000
 shaker sort,Reverse,50000,6908,2500025000
 shaker sort,Reverse,100000,27626,10000050000
 shaker sort,Reverse,300000,248937,90000150000
-shaker sort,Reverse,500000,693702,250000250000
+shaker sort,Reverse,500000,693702,2.50E+11
 shell sort,Reverse,10000,0,475175
 shell sort,Reverse,30000,2,1554051
 shell sort,Reverse,50000,6,2844628
@@ -202,7 +202,7 @@ selection sort,Nearly sorted,30000,1081,900029999
 selection sort,Nearly sorted,50000,2991,2500049999
 selection sort,Nearly sorted,100000,11922,10000099999
 selection sort,Nearly sorted,300000,107332,90000299999
-selection sort,Nearly sorted,500000,297748,250000499999
+selection sort,Nearly sorted,500000,297748,2.50E+11
 insertion sort,Nearly sorted,10000,0,313618
 insertion sort,Nearly sorted,30000,2,901950
 insertion sort,Nearly sorted,50000,4,1923316
@@ -214,7 +214,7 @@ bubble sort,Nearly sorted,30000,673,785293393
 bubble sort,Nearly sorted,50000,1959,1917184842
 bubble sort,Nearly sorted,100000,10674,9104817237
 bubble sort,Nearly sorted,300000,64109,66309708689
-bubble sort,Nearly sorted,500000,306603,177285687166
+bubble sort,Nearly sorted,500000,306603,1.77E+11
 shaker sort,Nearly sorted,10000,0,179285
 shaker sort,Nearly sorted,30000,1,537548
 shaker sort,Nearly sorted,50000,6,1046006

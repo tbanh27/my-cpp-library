@@ -79,7 +79,7 @@ long long ShakerSort(int *a, int n) {
     int cmp = 0;
     auto start = chrono::high_resolution_clock::now();
     int left = 0, right = n - 1;
-    int lastSwapPos = n - 1;
+    int lastSwapPos = left + 1;
     do {
         for (int j = left; ++cmp && j < right; j++) {
             if (++cmp && a[j] > a[j+1]) {
@@ -666,24 +666,22 @@ int main() {
     cin >> n;
 
     int *a = new int[n];
-    int *b = new int[n];
+    //int *b = new int[n];
 
-    GenerateData(a, n, 0);
-    GenerateData(b, n, 0);
+    GenerateData(a, n, 1);
+    //GenerateData(b, n, 0);
 
     //printArray(a, n);
     //printArray(b, n);
 
-    long long time = FlashSortCalcTime(a, n);
-    long long compare = FlashSortCalcCompare(a, n);
-
+    cout << ShakerSort(a, n) << " milisecs\n";
     //printArray(a, n);
 
-    cout << "Time: " << time << " milisecs\n";
-    cout << "Comparisons: " << compare << endl; 
+    //cout << "Time: " << time << " milisecs\n";
+    //cout << "Comparisons: " << compare << endl; 
 
-    delete[] a;
-    delete[] b;
+    //delete[] a;
+    //delete[] b;
 
     return 0;
 }
