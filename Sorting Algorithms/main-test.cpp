@@ -1,16 +1,17 @@
+/*
 #include <fstream>
 using namespace std;
 
 #include "SortingAlgorithms.h"
 #include "DataGenerator.h"
 
-/*
+
 Data orders:
  - 0 means Randomize
  - 1 means Sorted
  - 2 means Reverse
  - 3 means Nearly Sorted
-*/
+
 
 static int dataOrders[4] = {0, 1, 2, 3};
 static int dataSizes[6] = {10000, 30000, 50000, 100000, 300000, 500000};
@@ -40,7 +41,7 @@ int main() {
     out << "algorithm,data order,data size,used time (milisecs),comparisons\n";
 
     for (int order = 1; order <= 1; order++) {
-        /*for (int size = 0; size < 6; size++) {
+        for (int size = 0; size < 6; size++) {
             int dataSize = dataSizes[size];
             string dataOrder = getOrder(order);
             GenerateData(array, dataSize, order);
@@ -59,7 +60,7 @@ int main() {
             GenerateData(array, dataSize, order);
             out << BinaryInsertionSortCountCompare(array, dataSize) << "\n"; 
             cout << "Insertion Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
-        }*/
+        }
         for (int size = 0; size < 6; size++) {
             int dataSize = dataSizes[size];
             string dataOrder = getOrder(order);
@@ -80,7 +81,7 @@ int main() {
             out << ShakerSortCountCompare(array, dataSize) << "\n"; 
             cout << "Shaker Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
         }
-        /*for (int size = 0; size < 6; size++) {
+        for (int size = 0; size < 6; size++) {
             int dataSize = dataSizes[size];
             string dataOrder = getOrder(order);
             GenerateData(array, dataSize, order);
@@ -149,10 +150,11 @@ int main() {
             GenerateData(array, dataSize, order);
             out << FlashSortCalcCompare(array, dataSize) << "\n"; 
             cout << "Flash Sort | Size: " << dataSize << " | Order: " << dataOrder << " COMPLETED!" << endl;
-        }*/
+        }
     }
 
     out.close();
 
     return 0;
 }
+*/
