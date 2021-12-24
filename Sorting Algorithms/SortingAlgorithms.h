@@ -37,7 +37,7 @@ long long SelectionSortCountCompare(int *a, int n);
 // được sắp, ta sẽ tìm vị trí đúng cho a[i] trong đoạn từ a[0] đến a[i-1]
 // Cải tiến: do đoạn từ a[0] đến a[i-1] đã được sắp, ta có thể tìm vị trí để chèn a[i] vào
 // bằng tìm kiếm nhị phân
-// Tài liệu tham khảo: video record bài giảng của thầy Nguyễn Thanh Phương, ngày 8-11-2021 phần 1
+// Tài liệu tham khảo: video record bài giảng của thầy Nguyễn Thanh Phương, ngày 8-10-2021 phần 1
 // Link: https://courses.fit.hcmus.edu.vn/mod/page/view.php?id=86001
 
 // Hàm trả về thời gian thực thi hàm
@@ -51,7 +51,7 @@ long long BinaryInsertionSortCountCompare(int a[], int n);
 // sau đó giảm right đi 1 và tiếp tục cho đến khi left > right
 // Cải tiến: nếu trong một lần duyệt không tìm ra phần tử a[j] > a[j+1] thì đã sắp xếp xong
 // Cải tiến: ghi nhớ vị trí cuối cùng xảy ra phép hoán vị để thu hẹp khoản cần duyệt nhanh hơn
-// Tài liệu tham khảo: video record bài giảng của thầy Nguyễn Thanh Phương, ngày 8-11-2021 phần 1
+// Tài liệu tham khảo: video record bài giảng của thầy Nguyễn Thanh Phương, ngày 8-10-2021 phần 1
 // Link: https://courses.fit.hcmus.edu.vn/mod/page/view.php?id=86001
 
 // Hàm trả về thời gian thực thi hàm
